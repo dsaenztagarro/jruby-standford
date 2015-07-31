@@ -1,0 +1,139 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>dst</groupId>
+  <artifactId>standford_nlp</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>Standford NLP Service Dependency Manager</name>
+
+  <properties>
+    <jruby.version>1.7.13</jruby.version>
+    <standfordnlp.version>3.5.0</standfordnlp.version>
+  </properties>
+
+  <dependencies>
+
+    <!-- Standford NLP -->
+
+    <dependency>
+      <groupId>edu.stanford.nlp</groupId>
+      <artifactId>stanford-corenlp</artifactId>
+      <version>${standfordnlp.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>edu.stanford.nlp</groupId>
+      <artifactId>stanford-corenlp</artifactId>
+      <version>${standfordnlp.version}</version>
+      <classifier>models</classifier>
+    </dependency>
+
+    <!-- Standford NLP Dependencies -->
+
+    <dependency>
+      <groupId>com.googlecode.efficient-java-matrix-library</groupId>
+      <artifactId>ejml</artifactId>
+      <version>0.23</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.io7m.xom</groupId>
+      <artifactId>xom</artifactId>
+      <version>1.2.10</version>
+    </dependency>
+
+    <dependency>
+      <groupId>de.jollyday</groupId>
+      <artifactId>jollyday</artifactId>
+      <version>0.4.7</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.json</groupId>
+      <artifactId>javax.json-api</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.1</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.10</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>lib/java/</outputDirectory>
+              <overWrite>false</overWrite>
+              <artifactItems>
+
+                <!-- Standford NLP -->
+
+                <artifactItem>
+                  <groupId>edu.stanford.nlp</groupId>
+                  <artifactId>stanford-corenlp</artifactId>
+                  <version>${standfordnlp.version}</version>
+                  <type>jar</type>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>edu.stanford.nlp</groupId>
+                  <artifactId>stanford-corenlp</artifactId>
+                  <version>${standfordnlp.version}</version>
+                  <classifier>models</classifier>
+                  <type>jar</type>
+                </artifactItem>
+
+                <!-- Standford NLP Dependencies -->
+
+                <artifactItem>
+                  <groupId>com.googlecode.efficient-java-matrix-library</groupId>
+                  <artifactId>ejml</artifactId>
+                  <version>0.23</version>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>com.io7m.xom</groupId>
+                  <artifactId>xom</artifactId>
+                  <version>1.2.10</version>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>de.jollyday</groupId>
+                  <artifactId>jollyday</artifactId>
+                  <version>0.4.7</version>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>javax.json</groupId>
+                  <artifactId>javax.json-api</artifactId>
+                  <version>1.0</version>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>joda-time</groupId>
+                  <artifactId>joda-time</artifactId>
+                  <version>2.1</version>
+                </artifactItem>
+
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

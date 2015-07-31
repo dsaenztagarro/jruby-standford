@@ -1,0 +1,5 @@
+web:
+  build: .
+  # command: jruby -J-Xmx2048m -J-Xms1024m -S rackup -s Trinidad
+  ports:
+    - "3000:3000"

@@ -1,0 +1,4 @@
+.bundle
+.class
+nlp_service.war
+lib/java/*
